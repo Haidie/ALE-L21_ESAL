@@ -29,8 +29,8 @@ DTB_OBJS := $(addprefix $(obj)/dts/,$(DTB_LIST))
 $(obj)/Image: vmlinux FORCE
 	$(call if_changed,objcopy)
 
-$(obj)/Image.gz: $(obj)/Image FORCE
-	$(call if_changed,gzip)
+$(obj)/Image.gz: vmlinux FORCE
+	$(call if_changed,objcopy)
 
 $(obj)/Image.gz-dtb: $(obj)/Image.gz $(DTB_OBJS) FORCE
 	$(call if_changed,cat)
